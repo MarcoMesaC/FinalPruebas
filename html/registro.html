@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:schema="http://schema.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="registro-page" schema:WebPage>
+    <div class="registro-header">
+        <h1>Registro de Usuario</h1>
+    </div>
+
+    <!-- Contenedor -->
+    <div class="registro-wrapper">
+        <div class="registro-container" schema:mainEntity schema:type="RegisterAction">
+            <h2>Ingresa tus datos</h2>
+
+            <!-- Formulario -->
+            <form action="index.html" method="post" schema:target schema:type="EntryPoint">
+                <div class="form-group" schema:agent schema:type="Person">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required schema:email>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="contrasena" required>
+                </div>
+
+                <button type="submit">Registrar</button>
+            </form>
+
+            <!-- Enlace al login -->
+            <p class="register-text">
+                ¿Ya tienes una cuenta? 
+                <a href="login.html" schema:potentialAction schema:type="LoginAction">Inicia sesión aquí</a>.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

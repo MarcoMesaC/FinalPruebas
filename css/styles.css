@@ -1,0 +1,717 @@
+/* Paleta de colores */
+:root {
+    --primary-green: #1c6b44;
+    --secondary-gray: #cedad3;
+    --dark-green: #043c04;
+    --highlight-yellow: #e1be10;
+    --background-light: #f5f5f5;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-gray);
+    color: var(--dark-green);
+}
+
+/* Estilo del Banner con Carrusel */
+.banner {
+    position: relative;
+    height: 400px; /* Altura fija para el banner */
+    overflow: hidden; /* Oculta cualquier contenido fuera del área */
+}
+
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen al tamaño del contenedor sin distorsión */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none; /* Oculta todas las imágenes por defecto */
+    transition: opacity 0.5s ease-in-out; /* Transición suave para los cambios */
+}
+
+.carousel-image.active {
+    display: block; /* Muestra la imagen activa */
+    opacity: 1; /* Hace visible la imagen activa */
+}
+
+.banner h1 {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 2em;
+    z-index: 1; /* texto encima de las imágenes */
+}
+
+/* Ajuste Responsive para el banner */
+@media (max-width: 768px) {
+    .banner {
+        height: 250px; 
+    }
+
+    .banner h1 {
+        font-size: 1.5em;
+    }
+}
+
+/* Estilo del Navbar */
+.navbar {
+    background-color: var(--primary-green);
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    background-color: var(--background-light);
+    color: var(--dark-green);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: var(--highlight-yellow);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Botones */
+button, .btn {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: var(--highlight-yellow);
+    color: var(--dark-green);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del Contenido Principal */
+.main-content {
+    padding: 20px;
+}
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Contenedor de publicaciones */
+.publicaciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estilo de la tarjeta de publicación */
+.publicacion-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.publicacion-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de la publicación */
+.publicacion-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Información de la publicación */
+.publicacion-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.publicacion-info h3 {
+    font-size: 1.5em;
+    color: var(--primary-green);
+    margin-bottom: 10px;
+}
+
+.publicacion-info p {
+    font-size: 1em;
+    color: var(--dark-green);
+    line-height: 1.5;
+}
+
+/* Sección de Comentarios */
+.comentarios-section {
+    margin-top: 15px;
+    padding: 15px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comentarios-section h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+/* Input de comentario */
+.comentario-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.comentario-input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 4px rgba(0, 128, 0, 0.3);
+}
+
+/* Botón de agregar comentario */
+.btn.btn-primary {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn.btn-primary:hover {
+    background-color: #2e8b57;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Lista de comentarios */
+.comentarios-list {
+    margin-top: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.comentarios-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comentarios-list li {
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333333;
+    font-size: 0.95em;
+    border-radius: 4px;
+    background-color: #fefefe;
+    transition: background-color 0.3s;
+}
+
+.comentarios-list li:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.comentarios-list li:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Estilos para la página Mi Perfil */
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: center;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: var(--primary-green);
+}
+
+/* Estilos del formulario */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-form label {
+    font-weight: bold;
+    color: var(--primary-green);
+    margin-bottom: 5px;
+}
+
+.profile-form input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.profile-form button {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.profile-form button:hover {
+    background-color: var(--highlight-yellow);
+    color: var(--dark-green);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    .content {
+        padding: 15px;
+    }
+
+    .profile-form {
+        width: 100%;
+    }
+
+    .profile-form input {
+        padding: 12px;
+        font-size: 1.1em;
+    }
+
+    .profile-form button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+    }
+}
+
+/* Estilos para Crear Publicación */
+.content {
+    background-color: var(--background-light);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-green);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.publication-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: var(--dark-green);
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--secondary-gray);
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border-color 0.3s;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-green);
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input[type="file"] {
+    padding: 5px;
+    font-size: 1em;
+    color: var(--dark-green);
+}
+
+button.btn {
+    align-self: center;
+    font-size: 1.2em;
+    padding: 10px 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    button.btn {
+        font-size: 1em;
+        padding: 8px 20px;
+    }
+}
+
+
+/* Estilos Para el Login*/
+
+.login-page {
+    background-color: #1c6b44;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.login-header {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #1c6b44;
+}
+
+.login-header h1 {
+    font-size: 4em; 
+    font-weight: bold;
+    margin: 0;
+    color: white;
+    text-transform: uppercase; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra */
+    letter-spacing: 2px; 
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #cedad3; 
+    border-radius: 10px;
+    background-color: white; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #1c6b44; 
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1c6b44; 
+}
+
+.login-container .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.login-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1c6b44;
+}
+
+.login-container input {
+    padding: 10px;
+    border: 1px solid #cedad3;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.login-container button {
+    width: 100%;
+    background-color: #1c6b44;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #e1be10; 
+    color: #1c6b44;
+}
+
+/*Texto de registro*/
+.register-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #1c6b44;
+}
+
+.register-text a {
+    color: #e1be10;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+/* Imágenes de los logos */
+.corner-image {
+    position: absolute;
+    height: auto;
+    top: 20px; /* Separación desde la parte superior */
+}
+
+.corner-image.left {
+    width: 200px; /* Tamaño */
+    left: 20px; /* Ubicación en la esquina superior izquierda */
+}
+
+.corner-image.right {
+    width: 120px; /* Tamaño*/
+    right: 20px; /* Ubicación en la esquina superior derecha */
+}
+
+/*Responsive pantallas medianas*/
+@media (max-width: 768px) {
+    .corner-image.left {
+        width: 140px; 
+        left: 10px; 
+    }
+
+    .corner-image.right {
+        width: 100px; 
+        right: 10px;
+    }
+}
+/*Responsive pantallas pequeñas*/
+@media (max-width: 480px) {
+    .corner-image.left {
+        width: 100px; 
+        left: 5px; 
+    }
+
+    .corner-image.right {
+        width: 80px; 
+        right: 5px; 
+    }
+}
+
+
+
+/* Estilos Para el Registro */
+.registro-page {
+    background-color: #1c6b44;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+    margin: 0;
+}
+
+.registro-header {
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #1c6b44;
+}
+
+.registro-header h1 {
+    font-size: 4em; 
+    font-weight: bold;
+    margin: 0;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.registro-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.registro-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #cedad3;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #1c6b44;
+}
+
+.registro-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1c6b44;
+}
+
+.registro-container .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.registro-container label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1c6b44;
+}
+
+.registro-container input {
+    padding: 10px;
+    border: 1px solid #cedad3;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.registro-container button {
+    width: 100%;
+    background-color: #1c6b44;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.registro-container button:hover {
+    background-color: #e1be10;
+    color: #1c6b44;
+}
+
+/* Texto para redirección al login */
+.register-text {
+    text-align: center;
+    margin-top: 15px;
+    color: #1c6b44;
+}
+
+.register-text a {
+    color: #e1be10;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+/* Mensaje de error */
+.error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}

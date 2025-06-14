@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:schema="http://schema.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Publicaciones</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body schema:WebPage schema:name="Mis Publicaciones" schema:about="https://polisales.com">
+    <!-- Banner con carrusel de imágenes -->
+    <header schema:mainEntity>
+        <div class="banner" schema:CreativeWork schema:headline="Carrusel de Imágenes">
+            <div class="carousel">
+                <img src="../assets/images/img1.jpg" class="carousel-image" alt="Imagen 1" schema:image />
+                <img src="../assets/images/img2.jpg" class="carousel-image" alt="Imagen 2" schema:image />
+                <img src="../assets/images/img3.jpg" class="carousel-image" alt="Imagen 3" schema:image />
+            </div>
+            <h1 schema:name>Mis Publicaciones</h1>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="navbar" schema:WebPageElement schema:role="navigation">
+            <ul>
+                <li><a href="index.html" schema:url>Publicaciones</a></li>
+                <li><a href="misPublicaciones.html" schema:url>Mis Publicaciones</a></li>
+                <li><a href="crearPublicacion.html" schema:url>Crear Publicación</a></li>
+                <li><a href="miPerfil.html" schema:url>Mi Perfil</a></li>
+                <li><a href="login.html" schema:url>Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main schema:mainContentOfPage>
+        <div class="content" schema:mainEntityOfPage typeof="ItemList">
+            <h2>Lista de Publicaciones</h2>
+
+            <div class="publicaciones">
+                <!-- Ejemplo de publicación -->
+                <div class="publicacion-card" schema:itemListElement typeof="BlogPosting">
+                    <div class="publicacion-image" schema:image>
+                        <img src="../assets/uploads/ejemplo1.jpg" alt="Imagen de la publicación">
+                    </div>
+                    <div class="publicacion-info">
+                        <h3 schema:headline>Título de ejemplo</h3>
+                        <p schema:articleBody>Este es el contenido de la publicación de ejemplo. Aquí iría la descripción.</p>
+                        <meta schema:author content="Usuario Actual">
+                        <meta schema:datePublished content="2025-06-13">
+                        <button type="button" class="btn-eliminar" onclick="eliminarPublicacion()">Eliminar Publicación</button>
+                    </div>
+                </div>
+
+                <!-- Otra publicación -->
+                <div class="publicacion-card" schema:itemListElement typeof="BlogPosting">
+                    <div class="publicacion-image" schema:image>
+                        <img src="../assets/uploads/ejemplo2.jpg" alt="Imagen de la publicación">
+                    </div>
+                    <div class="publicacion-info">
+                        <h3 schema:headline>Otra publicación</h3>
+                        <p schema:articleBody>Contenido breve de otra publicación visible para el usuario.</p>
+                        <meta schema:author content="Usuario Actual">
+                        <meta schema:datePublished content="2025-06-12">
+                        <button type="button" class="btn-eliminar" onclick="eliminarPublicacion()">Eliminar Publicación</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script para el carrusel de imágenes -->
+    <script>
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".carousel-image");
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentImageIndex].style.display = "none";
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            images[currentImageIndex].style.display = "block";
+        }
+
+        images.forEach((img, index) => img.style.display = index === 0 ? "block" : "none");
+        setInterval(showNextImage, 3000);
+
+        function eliminarPublicacion() {
+            alert("Funcionalidad no disponible.");
+        }
+    </script>
+</body>
+</html>

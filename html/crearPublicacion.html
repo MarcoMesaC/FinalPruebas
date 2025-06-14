@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:schema="http://schema.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Publicación</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body schema:WebPage schema:name="Crear Publicación" schema:about="https://polisales.com">
+    <header schema:mainEntity>
+        <!-- Banner con carrusel de imágenes -->
+        <div class="banner" schema:CreativeWork schema:headline="Carrusel de Imágenes">
+            <div class="carousel">
+                <img src="../assets/images/img1.jpg" class="carousel-image" alt="Imagen de carrusel" schema:image />
+                <img src="../assets/images/img2.jpg" class="carousel-image" alt="Imagen de carrusel" schema:image />
+                <img src="../assets/images/img3.jpg" class="carousel-image" alt="Imagen de carrusel" schema:image />
+            </div>
+            <h1 schema:name>Crear Publicación</h1>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="navbar" schema:WebPageElement schema:role="navigation">
+            <ul>
+                <li><a href="index.html" schema:url>Publicaciones</a></li>
+                <li><a href="misPublicaciones.html" schema:url>Mis Publicaciones</a></li>
+                <li><a href="crearPublicacion.html" schema:url>Crear Publicación</a></li>
+                <li><a href="miPerfil.html" schema:url>Mi Perfil</a></li>
+                <li><a href="login.html" schema:url>Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main schema:mainContentOfPage>
+        <div class="content">
+            <h2 schema:headline>Crear una nueva publicación</h2>
+            <!-- Formulario -->
+            <form id="publicationForm" class="publication-form" method="post" enctype="multipart/form-data">
+                <div class="form-group" schema:PropertyValue schema:propertyID="title">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" name="titulo" placeholder="Ingrese el título de la publicación" required schema:value />
+                </div>
+
+                <div class="form-group" schema:PropertyValue schema:propertyID="description">
+                    <label for="description">Descripción:</label>
+                    <textarea id="description" name="contenido" placeholder="Escriba una descripción para la publicación" required schema:value></textarea>
+                </div>
+
+                <div class="form-group" schema:PropertyValue schema:propertyID="category">
+                    <label for="category">Categoría:</label>
+                    <select id="category" name="categoria" required schema:value>
+                        <option value="" disabled selected>Seleccione una categoría</option>
+                        <option value="Servicio">Servicio</option>
+                        <option value="Solicitud">Solicitud</option>
+                        <option value="Elemento de Estudio">Elemento de Estudio</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+
+                <div class="form-group" schema:PropertyValue schema:propertyID="image">
+                    <label for="image">Imagen:</label>
+                    <input type="file" id="image" name="imagen" accept="image/*" schema:value />
+                </div>
+
+                <button type="submit" class="btn" schema:Action schema:actionStatus="CompletedActionStatus">Publicar</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Script para el carrusel de imágenes y envío simulado -->
+    <script>
+        // Carrusel
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".carousel-image");
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentImageIndex].style.display = "none";
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            images[currentImageIndex].style.display = "block";
+        }
+
+        images.forEach((img, index) => img.style.display = index === 0 ? "block" : "none");
+        setInterval(showNextImage, 3000);
+
+        // Lógica del formulario (simulado)
+        const form = document.getElementById('publicationForm');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const categoryName = document.getElementById('category').value;
+
+            // Simulación de envío (sin backend)
+            console.log('Datos enviados:');
+            console.log({
+                titulo: title,
+                contenido: description,
+                categoria: categoryName
+            });
+
+            alert('¡Publicación guardada con éxito! (simulada)');
+            form.reset();
+        });
+    </script>
+</body>
+</html>

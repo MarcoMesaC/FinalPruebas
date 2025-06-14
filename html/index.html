@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:schema="http://schema.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Principal - Blog</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <!-- Banner con carrusel de imágenes -->
+    <header schema:about="https://polisales.com" schema:mainEntityOfPage>
+        <div class="banner" schema:CreativeWork>
+            <div class="carousel">
+                <!-- Aquí puedes poner manualmente tus imágenes -->
+                <img src="../assets/images/img1.jpg" class="carousel-image" alt="Imagen de carrusel" schema:image>
+                <img src="../assets/images/img2.jpg" class="carousel-image" alt="Imagen de carrusel" schema:image>
+                <img src="../assets/images/img3.jpg" class="carousel-image" alt="Imagen de carrusel" schema:image>
+            </div>
+            <h1 schema:name>Bienvenido a POLIsales</h1>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="navbar" schema:WebPageElement schema:role="navigation">
+            <ul>
+                <li><a href="index.html" schema:url>Publicaciones</a></li>
+                <li><a href="misPublicaciones.html" schema:url>Mis Publicaciones</a></li>
+                <li><a href="crearPublicacion.html" schema:url>Crear Publicación</a></li>
+                <li><a href="miPerfil.html" schema:url>Mi Perfil</a></li>
+                <li><a href="login.html" schema:url>Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main schema:mainContentOfPage>
+        <div class="content">
+            <h2 schema:headline>Publicaciones Recientes</h2>
+            <div class="publicaciones" schema:Blog>
+                <!-- Repite este bloque manualmente por cada publicación -->
+                <div class="publicacion-card" schema:BlogPosting>
+                    <!-- Imagen de la publicación -->
+                    <div class="publicacion-image" schema:image>
+                        <img src="../assets/images/ejemplo.jpg" alt="Imagen de la publicación" schema:contentUrl>
+                    </div>
+
+                    <!-- Información de la publicación -->
+                    <div class="publicacion-info">
+                        <h3 schema:headline>Título de la publicación</h3>
+                        <p schema:articleBody>Contenido de ejemplo para esta publicación. Aquí iría el contenido real.</p>
+                    </div>
+
+                    <!-- Sección de Comentarios -->
+                    <div class="comentarios-section" schema:CommentAction>
+                        <h4>Agregar Comentario</h4>
+                        <input type="text" class="comentario-input" placeholder="Escribe tu comentario aquí..." />
+                        <button class="btn btn-primary" onclick="agregarComentario(this)">Agregar Comentario</button>
+                        <div class="comentarios-list" schema:userInteractionCount>
+                            <h4>Comentarios:</h4>
+                            <ul class="lista-comentarios"></ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin de una publicación -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Manejo de los comentarios sin guardar en BD -->
+    <script>
+        function agregarComentario(button) {
+            const comentarioInput = button.previousElementSibling;
+            const comentarioTexto = comentarioInput.value.trim();
+
+            if (comentarioTexto !== "") {
+                const nuevoComentario = document.createElement("li");
+                nuevoComentario.textContent = comentarioTexto;
+                const listaComentarios = button.parentElement.querySelector(".lista-comentarios");
+                listaComentarios.appendChild(nuevoComentario);
+                comentarioInput.value = "";
+            } else {
+                alert("Por favor, escribe un comentario antes de agregarlo.");
+            }
+        }
+
+        let currentImageIndex = 0;
+        const images = document.querySelectorAll(".carousel-image");
+        const totalImages = images.length;
+
+        function showNextImage() {
+            images[currentImageIndex].style.display = "none";
+            currentImageIndex = (currentImageIndex + 1) % totalImages;
+            images[currentImageIndex].style.display = "block";
+        }
+
+        images.forEach((img, index) => img.style.display = index === 0 ? "block" : "none");
+        setInterval(showNextImage, 3000);
+    </script>
+</body>
+</html>
+
